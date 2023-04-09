@@ -12,8 +12,22 @@ export class DataService {
     }
     constructor() { }
     guardarMaquinaEnLocalStorage(): void {
-        const maquinaCafeString = JSON.stringify(this.MaquinaCafe);
-        localStorage.setItem('maquinaCafe', maquinaCafeString);
+        const maquinaCafeString = localStorage.getItem('maquinaCafe');
+  if (maquinaCafeString) {
+    // Si ya existe una máquina de café en localStorage, utiliza esa
+    this.MaquinaCafe = JSON.parse(maquinaCafeString);
+  } else {
+    // Si no, crea una nueva con los valores predeterminados
+    this.MaquinaCafe = {
+      cafe: {cantidadCafe: 8},
+      vasoPequenos: {cantidadDisponible: 8, contenido: 3},
+      vasoMediano: {cantidadDisponible: 12, contenido: 5},
+      vasoGrande: {cantidadDisponible: 0, contenido: 7},
+      azucar: {cantidadAzucar: 4}
+    };
+  }
+  // Guarda la máquina de café actual en localStorage
+  localStorage.setItem('maquinaCafe', JSON.stringify(this.MaquinaCafe));
     }
 
     obtenerMaquinaDesdeLocalStorage(): MaquinaCafe | null {
