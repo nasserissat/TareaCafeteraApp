@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/services/data.service';
 
 @Component({
     selector: 'bienvenida-page',
@@ -13,7 +14,9 @@ import { Component, OnInit } from '@angular/core';
 
 export class BienvenidaPage implements OnInit {
 
-    constructor() { }
+    constructor(private dataService: DataService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.dataService.guardarMaquinaEnLocalStorage();
+     }
 }

@@ -1,6 +1,6 @@
 export interface Vaso {
     cantidadDisponible: number;
-    contendo: number;
+    contenido: number;
 }
 export interface Cafetera{
     cantidadCafe: number;
