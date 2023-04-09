@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { DataService } from 'src/services/data.service';
 
 @Component({
@@ -26,14 +27,22 @@ import { DataService } from 'src/services/data.service';
 })
 
 export class VasosPage implements OnInit {
-    constructor(private router: Router, private dataService: DataService) { }
+    constructor(private router: Router, private dataService: DataService, private toastr: ToastrService) { }
 
     ngOnInit() {
         this.dataService.obtenerMaquinaDesdeLocalStorage()
      }
     
      selectVaso(tipoDeVaso: string) {
+        try {
+            this.dataService.verificarDisponibilidadEnLocalStorage(tipoDeVaso);
+        } catch (error: any) {
+            this.toastr.error(error.message, 'error')
+            return
+        }
+  
         this.dataService.actualizarMaquinaEnLocalStorage(tipoDeVaso);
+        
         this.router.navigate(['/cafe']);
       }
 }

@@ -18,7 +18,7 @@ import { DataService } from 'src/services/data.service';
 })
 
 export class CafePage implements OnInit {
-    countDown: number = 5
+    countDown: number = 1
     hayCafe: boolean = true;
     constructor(private router: Router, private dataService: DataService) { }
 
