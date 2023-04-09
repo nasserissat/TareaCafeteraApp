@@ -13,6 +13,7 @@ import { AzucarPage } from './pages/azucar.page';
 import { GraciasPage } from './pages/gracias.page';
 import { PageNotFound } from './pages/pageNotFound';
 import { BienvenidaPage } from './pages/bienvenida.page';
+import { DataService } from 'src/services/data.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { BienvenidaPage } from './pages/bienvenida.page';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
