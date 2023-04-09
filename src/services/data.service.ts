@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 import { MaquinaCafe } from 'src/models/models.model';
 
 @Injectable({providedIn: 'root'})
 export class DataService {
     MaquinaCafe: MaquinaCafe ={
-        cafe: {cantidadCafe: 8},
+        cafe: {cantidadCafe: 14},
         vasoPequenos: {cantidadDisponible: 8, contenido: 3},
         vasoMediano: {cantidadDisponible: 12, contenido: 5},
-        vasoGrande: {cantidadDisponible: 0, contenido: 7},
-        azucar: {cantidadAzucar: 4}
+        vasoGrande: {cantidadDisponible: 1, contenido: 7},
+        azucar: {cantidadAzucar: 5}
     }
     constructor(private toastr: ToastrService) { }
     guardarMaquinaEnLocalStorage(): void {
@@ -21,11 +22,11 @@ export class DataService {
   } else {
     // Si no, crea una nueva con los valores predeterminados
     this.MaquinaCafe = {
-      cafe: {cantidadCafe: 8},
-      vasoPequenos: {cantidadDisponible: 8, contenido: 3},
-      vasoMediano: {cantidadDisponible: 12, contenido: 5},
-      vasoGrande: {cantidadDisponible: 0, contenido: 7},
-      azucar: {cantidadAzucar: 4}
+        cafe: {cantidadCafe: 14},
+        vasoPequenos: {cantidadDisponible: 8, contenido: 3},
+        vasoMediano: {cantidadDisponible: 12, contenido: 5},
+        vasoGrande: {cantidadDisponible: 1, contenido: 7},
+        azucar: {cantidadAzucar: 5}
     };
     console.log('maquina nueva', this.MaquinaCafe)
   }
